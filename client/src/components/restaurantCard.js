@@ -45,7 +45,7 @@ export default function RestaurantCard(props) {
 				<h4 className={classes.name}>{restaurant.name}</h4>
 				<p className={classes.description}>{trucateTxt(restaurant.description)}</p>
 				<div className="d-flex justify-content-end">
-					<Link className={classes.seeMore} to={`/restaurant?id=${restaurant.id}`}>
+					<Link className={classes.seeMore} to={`/restaurant/${restaurant.id}`}>
 						SEE MORE...
 					</Link>
 				</div>

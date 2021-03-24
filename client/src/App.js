@@ -9,7 +9,7 @@ function App() {
 		<Router>
 			<Switch>
 				<RouteWithLayout component={Home} layout={Layout} exact path="/" />
-				<RouteWithLayout component={Restaurant} layout={Layout} exact path="/restaurant" />
+				<RouteWithLayout component={Restaurant} layout={Layout} exact path="/restaurant/:id" />
 			</Switch>
 		</Router>
 	);
