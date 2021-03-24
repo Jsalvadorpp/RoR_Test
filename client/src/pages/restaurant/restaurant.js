@@ -1,8 +1,8 @@
 import React from 'react';
-import useStyles from './styles';
+//import useStyles from './styles';
 
 export default function Restaurant() {
-	const classes = useStyles();
+	//const classes = useStyles();
 
 	return <div>Restaurant view</div>;
 }
