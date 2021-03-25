@@ -24,9 +24,12 @@ export default function Restaurant(props) {
 	const [ formComment, setFormComment ] = useState('');
 
 	//component did mount
-	useEffect(() => {
-		getRestaurantInfo(id);
-	}, []);
+	useEffect(
+		() => {
+			getRestaurantInfo(id);
+		},
+		[ id ]
+	);
 
 	const getRestaurantInfo = (id) => {
 		API.restaurants
