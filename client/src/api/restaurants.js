@@ -7,8 +7,12 @@ const getRestaurants = async () => {
 const getOneRestaurant = async (id) => {
 	return await axios.get(`${base_url}/restaurant/${id}`);
 };
+const postComment = async (id, data) => {
+	return await axios.post(`${base_url}/restaurant/${id}/comment`, data);
+};
 
 export default {
 	getRestaurants,
-	getOneRestaurant
+	getOneRestaurant,
+	postComment
 };

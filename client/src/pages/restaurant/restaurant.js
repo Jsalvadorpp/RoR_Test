@@ -20,6 +20,8 @@ export default function Restaurant(props) {
 		gallery: []
 	});
 	const [ comments, setComments ] = useState([]);
+	const [ formName, setFormName ] = useState('');
+	const [ formComment, setFormComment ] = useState('');
 
 	//component did mount
 	useEffect(() => {
@@ -33,6 +35,25 @@ export default function Restaurant(props) {
 				let response = res.data;
 				setRestaurant(response.data.restaurant);
 				setComments(response.data.comments);
+			})
+			.catch((err) => {
+				toast.error('Something bad happend');
+			});
+	};
+
+	const postComment = () => {
+		const data = {
+			userName: formName,
+			bodyText: formComment
+		};
+
+		API.restaurants
+			.postComment(id, data)
+			.then((res) => {
+				toast.success('Comment created!');
+				getRestaurantInfo(id);
+				//clear form
+				setFormComment('');
 			})
 			.catch((err) => {
 				toast.error('Something bad happend');
@@ -80,18 +101,38 @@ export default function Restaurant(props) {
 					<label for="name" className={classes.label}>
 						Name
 					</label>
-					<input type="email" className="form-control" id="name" required />
+					<input
+						type="text"
+						className="form-control"
+						id="name"
+						required
+						value={formName}
+						onChange={(e) => setFormName(e.target.value)}
+					/>
 				</div>
 
 				<div className="form-group">
 					<label for="text" className={classes.label}>
 						Comment
 					</label>
-					<textarea className="form-control" id="text" rows="3" required />
+					<textarea
+						className="form-control"
+						id="text"
+						rows="3"
+						required
+						value={formComment}
+						onChange={(e) => setFormComment(e.target.value)}
+					/>
 				</div>
 
 				<div className="d-flex justify-content-end">
-					<Ui.Button color="primary" variant="contained" endIcon={<Icon.Send />} className={classes.sendBtn}>
+					<Ui.Button
+						color="primary"
+						variant="contained"
+						endIcon={<Icon.Send />}
+						className={classes.sendBtn}
+						onClick={postComment}
+					>
 						Send
 					</Ui.Button>
 				</div>
