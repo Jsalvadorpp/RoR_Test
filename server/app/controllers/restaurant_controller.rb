@@ -24,6 +24,12 @@ class RestaurantController < ApplicationController
         end
     end
 
+    def show
+        restaurant = Restaurant.find(params[:id])
+        render json: {status: 'Success',message: 'restaurant obtained',data: restaurant}
+     
+    end
+
     #verify fields from post request
     private def restaurant_params
         params.require('restaurant').permit(:name,:description,:logoUrl)
