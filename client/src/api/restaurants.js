@@ -11,8 +11,9 @@ const postComment = async (id, data) => {
 	return await axios.post(`${base_url}/restaurant/${id}/comment`, data);
 };
 
-export default {
+const Restaurant = {
 	getRestaurants,
 	getOneRestaurant,
 	postComment
 };
+export default Restaurant;

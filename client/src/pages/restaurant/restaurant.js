@@ -78,7 +78,7 @@ export default function Restaurant(props) {
 			<div className="row mb-5">
 				{restaurant.gallery.map((photo) => (
 					<div className="col-md-3">
-						<img src={photo} className={classes.galleryPhoto} />
+						<img src={photo} className={classes.galleryPhoto} alt={photo} />
 					</div>
 				))}
 			</div>
