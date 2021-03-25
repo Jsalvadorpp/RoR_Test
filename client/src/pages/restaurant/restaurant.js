@@ -63,8 +63,8 @@ export default function Restaurant(props) {
 	return (
 		<div className={classes.wrapper}>
 			{/*  Restaurant Info */}
-			<div className="row">
-				<div className="col-sm-2">
+			<div className="row mb-3">
+				<div className="col-sm-2 text-sm-center">
 					<img className={classes.logo} src={restaurant.logoUrl} alt={restaurant.name} />
 				</div>
 				<div className="col-sm-10 d-flex flex-column justify-content-center">

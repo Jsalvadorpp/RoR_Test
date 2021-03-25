@@ -16,7 +16,8 @@ export default makeStyles({
 	},
 	galleryPhoto: {
 		width: '100%',
-		maxHeight: '280px'
+		maxHeight: '280px',
+		marginBottom: '10px'
 	},
 	divider: {
 		height: '1px',

@@ -12,4 +12,7 @@
 
 /* breakpoint - sm */
 @media only screen and (max-width: 580px) {
+	text-sm-center {
+		text-align: center !important;
+	}
 }
