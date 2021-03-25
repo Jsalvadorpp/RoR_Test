@@ -10,6 +10,6 @@ export default makeStyles({
 		marginTop: '60px'
 	},
 	primaryTitle: {
-		color: '#F7931E;'
+		color: '#F7931E'
 	}
 });
