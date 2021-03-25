@@ -1,56 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import RestaurantCard from '../../components/restaurantCard';
 import useStyles from './styles';
-
-const restaurants = [
-	{
-		id: 1,
-		name: 'Island Grill',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus vel massa vel bibendum. Pellentesque eget ultricies purus. Cras ut maximus nisl. Ut porttitor gravida egestas. Morbi convallis mi posuere nisi ultricies, ac porttitor ex mollis. Integer at quam nisl.',
-		logo: 'images/logo1.jpg'
-	},
-	{
-		id: 2,
-		name: 'Flavoroso',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus vel massa vel bibendum. Pellentesque eget ultricies purus. Cras ut maximus nisl. Ut porttitor gravida egestas. Morbi convallis mi posuere nisi ultricies, ac porttitor ex mollis. Integer at quam nisl.',
-		logo: 'images/logo2.jpg'
-	},
-	{
-		id: 3,
-		name: 'Green Curry',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus vel massa vel bibendum. Pellentesque eget ultricies purus. Cras ut maximus nisl. Ut porttitor gravida egestas. Morbi convallis mi posuere nisi ultricies, ac porttitor ex mollis. Integer at quam nisl.',
-		logo: 'images/logo3.jpg'
-	},
-	{
-		id: 4,
-		name: 'El Pirata Porch',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus vel massa vel bibendum. Pellentesque eget ultricies purus. Cras ut maximus nisl. Ut porttitor gravida egestas. Morbi convallis mi posuere nisi ultricies, ac porttitor ex mollis. Integer at quam nisl.',
-		logo: 'images/logo4.jpg'
-	},
-	{
-		id: 5,
-		name: 'Sweet Escape',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus vel massa vel bibendum. Pellentesque eget ultricies purus. Cras ut maximus nisl. Ut porttitor gravida egestas. Morbi convallis mi posuere nisi ultricies, ac porttitor ex mollis. Integer at quam nisl.',
-		logo: 'images/logo5.jpg'
-	},
-	{
-		id: 6,
-		name: 'Salty Squid',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus vel massa vel bibendum. Pellentesque eget ultricies purus. Cras ut maximus nisl. Ut porttitor gravida egestas. Morbi convallis mi posuere nisi ultricies, ac porttitor ex mollis. Integer at quam nisl.',
-		logo: 'images/logo6.jpg'
-	}
-];
+import API from '../../api';
+import { toast } from 'react-toastify';
 
 export default function Home() {
 	const classes = useStyles();
 
-	console.log(restaurants);
+	//states
+	const [ restaurants, setRestaurnts ] = useState([]);
+
+	//component did mount
+	useEffect(() => {
+		getRestaurants();
+	}, []);
+
+	const getRestaurants = () => {
+		API.restaurants
+			.getRestaurants()
+			.then((res) => {
+				let response = res.data;
+				setRestaurnts(response.data);
+			})
+			.catch((err) => {
+				toast.error('Something bad happend');
+			});
+	};
 
 	return (
 		<div className={classes.homeWrapper}>
@@ -62,7 +37,7 @@ export default function Home() {
 			<div className="row">
 				{restaurants.map((item) => (
 					<div className="col-md-4">
-						<RestaurantCard restaurant={item} />
+						<RestaurantCard restaurant={item} key={item.id} />
 					</div>
 				))}
 			</div>

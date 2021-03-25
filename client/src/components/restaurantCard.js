@@ -40,7 +40,7 @@ export default function RestaurantCard(props) {
 
 	return (
 		<div className={classes.restaurantBox}>
-			<img src={restaurant.logo} className={classes.img} alt={restaurant.name} />
+			<img src={restaurant.logoUrl} className={classes.img} alt={restaurant.name} />
 			<div className="card-body p-3" style={{ minHeight: '150px' }}>
 				<h4 className={classes.name}>{restaurant.name}</h4>
 				<p className={classes.description}>{trucateTxt(restaurant.description)}</p>
