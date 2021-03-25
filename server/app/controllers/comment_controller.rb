@@ -11,7 +11,7 @@ class CommentController < ApplicationController
         comment = Comment.new(comment_params)
 
         if comment.save
-            render json: {status: 'Success',message: 'comments obtained',data: comment}
+            render json: {status: 'Success',message: 'comment created!',data: comment}
         else
             render json: {status: 'Error',message: 'comment not saved',data: comment.errors}
         end
