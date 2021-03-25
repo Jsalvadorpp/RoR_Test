@@ -24,9 +24,13 @@ class RestaurantController < ApplicationController
         end
     end
 
+
+    #get one restaurant info 
     def show
         restaurant = Restaurant.find(params[:id])
-        render json: {status: 'Success',message: 'restaurant obtained',data: restaurant}
+        comments = restaurant.comments
+
+        render json: {status: 'Success',message: 'restaurant obtained',data: {restaurant: restaurant, comments: comments}}
      
     end
 
