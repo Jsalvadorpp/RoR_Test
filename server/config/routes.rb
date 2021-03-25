@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   #Comments routes
   get '/comments' => 'comment#index'
-  post '/comment' => 'comment#create'
+  post '/restaurant/:restaurant_id/comment' => 'comment#create'
 
 
   #Restaurants routes

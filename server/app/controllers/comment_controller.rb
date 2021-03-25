@@ -8,8 +8,9 @@ class CommentController < ApplicationController
 
     #create new comment
     def create
-        comment = Comment.new(comment_params)
-
+        restaurant = Restaurant.find(params[:restaurant_id])
+        comment = restaurant.comments.new(comment_params)
+     
         if comment.save
             render json: {status: 'Success',message: 'comment created!',data: comment}
         else
